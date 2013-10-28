@@ -1,0 +1,68 @@
+<!doctype.html>
+
+<html>
+	<head>
+	<title>Clicking Game</title>
+	<style>
+		#board {
+			height: 400px; 
+			background-color: rgb(192,192,192);
+		}
+	</style>
+	<script language="javascript" type="text/javascript">
+	var total = 0;
+	var play = false;
+	var end = document.getElementById('board');
+	function display(element) {
+		var now = new Date();
+		if (!play) {
+			play = true;
+			startTime = now.getTime();
+			end.style.backgroundColor = 'rgb(128,0,0)';
+		}
+		if (now.getTime() - startTime > 1000) {
+			element.checked = !element.checked;
+			
+			return;
+		}
+		if (element.checked)
+			total++;
+		else
+			total--;
+		element.form.num.value = total;
+	}
+
+	function restart(form) {
+		total = 0;
+		play = false;
+		for (var i = 1; i <= 100; ++i) {
+	 		form.elements[i].checked = false;
+	    }
+	}
+	</script>
+	
+	<center> How many boxes can you check in 20 seconds?</center>
+	<script language="javascript" type="text/javascript">
+		document.write("<form><center>")
+		document.write('<input type="text" value="0" name="num" ');
+		document.write('size=10 onFocus="this.blur()"><br>')
+		for (var i = 0; i < 10; ++i) {
+		for (var j = 0; j < 10; ++j) {
+		document.write('<input type="checkbox" onClick="display(this)">')}
+		document.write("<br>")}
+		document.write('<input type="button" value="restart" ');
+		document.write('onClick="restart(this.form)">')
+		document.write("</center></form>")
+	</script>
+	<noscript>
+		<h3>This site requires JavaScript</h3>
+	</noscript>
+
+	
+	</head>
+	
+	<body>
+		<div id="board" onClick="alert('You clicked me');">
+		</div>
+	</body>
+</html>
