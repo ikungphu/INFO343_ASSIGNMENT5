@@ -18,9 +18,8 @@
 		if (!play) {
 			play = true;
 			startTime = now.getTime();
-			end.style.backgroundColor = 'rgb(128,0,0)';
 		}
-		if (now.getTime() - startTime > 1000) {
+		if (now.getTime() - startTime > 20000) {
 			element.checked = !element.checked;
 			
 			return;
@@ -38,6 +37,7 @@
 		for (var i = 1; i <= 100; ++i) {
 	 		form.elements[i].checked = false;
 	    }
+
 	}
 	</script>
 	
